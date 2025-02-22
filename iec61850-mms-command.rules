@@ -1,3 +1,21 @@
 #This rule look for Write command and $Oper / $SBO value in the packets.
-alert tcp any any -> any 102 (msg:"IED61850 Control Event"; flow:to_server; content:"|a5 64 a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 4f 70 65 72|"; priority:1; sid:1000013; rev:1;)
-alert tcp any any -> any 102 (msg:"IED61850 Select Before Operate Event"; flow:to_server; content:"|a5 64 a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 53 42 4f|"; sid:1000014; rev:1;)
+
+alert tcp any any -> any 102 (msg:"COTP TCP traffic 102"; sid:1000010; rev:1;)
+
+alert tcp any any -> any 102 (msg:"IED61850 Control Event"; flow:to_server; content:"|a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 4f 70 65 72|"; classtype:ICS-activity; priority:1; sid:1000011; rev:1;)
+
+alert tcp any any -> any 102 (msg:"IED61850 Select Before Operate Event"; flow:to_server; content:"|a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 53 42 4f|"; classtype:ICS-activity;  sid:1000012; rev:1;)
+
+
+alert tcp any any -> any 102 (msg:"IED61850 Control Event with IEDBrowser"; flow:to_server; content:"|a5 64 a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 4f 70 65 72|"; priority:1; sid:1000013; rev:1;)
+
+alert tcp any any -> any 102 (msg:"IED61850 Select Before Operate Event with IEDBrowser"; flow:to_server; content:"|a5 64 a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 53 42 4f|"; sid:1000014; rev:1;)
+
+alert tcp any any -> any 102 (msg:"IED61850 Control Event with IEDScout"; flow:to_server; content:"|a5 4f a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 4f 70 65 72|"; priority:1; sid:1000015; rev:1;)
+
+alert tcp any any -> any 102 (msg:"IED61850 Select Before Operate Event with IEDScout"; flow:to_server; content:"|a5 4f a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 53 42 4f|"; sid:1000016; rev:1;)
+
+alert tcp any any -> any 102 (msg:"IED61850 Control Event with IEC61850Action"; flow:to_server; content:"|a5 4b a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 4f 70 65 72|"; priority:1; sid:1000017; rev:1;)
+
+alert tcp any any -> any 102 (msg:"IED61850 Select Before Operate Event with IEC61850Action"; flow:to_server; content:"|a5 4b a0 27 30 25 a0 23|"; content:"|24 43 4f 24 50 6f 73 24 53 42 4f|"; sid:1000018; rev:1;)
+
